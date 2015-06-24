@@ -1,0 +1,128 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <title>&#23567;&#31859;&#25512;&#36865;Android&#37197;&#32622;&#25991;&#20214;&#26816;&#26597;&#24037;&#20855;</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+   </head>
+   <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div lang="zh_cn" class="article">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title"><a name="d5e1"></a>&#23567;&#31859;&#25512;&#36865;Android&#37197;&#32622;&#25991;&#20214;&#26816;&#26597;&#24037;&#20855;
+                  </h1>
+               </div>
+            </div>
+            <hr>
+         </div>
+         <div class="toc">
+            <p><b>&#30446;&#24405;</b></p>
+            <dl class="toc">
+               <dt><span class="section"><a href="#d5e4">1. &#20316;&#29992;</a></span></dt>
+               <dt><span class="section"><a href="#d5e8">2. &#20351;&#29992;</a></span></dt>
+               <dt><span class="section"><a href="#d5e20">3. &#26816;&#26597;&#35268;&#21017;</a></span></dt>
+            </dl>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="d5e4"></a>1.&nbsp;&#20316;&#29992;
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>&#22312;&#25509;&#20837;&#23567;&#31859;&#25512;&#36865;Android&#29256;SDK&#26102;&#65292;&#38656;&#35201;&#22312;AndroidManifest.xml&#20013;&#28155;&#21152;&#19968;&#20123;&#21442;&#25968;&#12290;&#20026;&#20102;&#31616;&#21270;&#20462;&#25913;&#27492;&#25991;&#20214;&#65292;&#29305;&#20570;&#27492;&#24037;&#20855;&#12290;</p>
+            <p>&#22905;&#21487;&#20197;&#23454;&#29616;&#26816;&#26597;&#29616;&#26377;AndroidManifest.xml&#21442;&#25968;&#26159;&#21542;&#40784;&#20840;&#65292;&#25110;&#20462;&#22797;&#19968;&#20123;&#21442;&#25968;&#12290;</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="d5e8"></a>2.&nbsp;&#20351;&#29992;
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>&#24037;&#20855;&#26159;&#20197;jar&#30340;&#24418;&#24335;&#25552;&#20379;&#12290;&#25226;&#27492;&#24037;&#20855;&#35774;&#32622;&#21040;&#29615;&#22659;&#21464;&#37327;&#37324;</p>
+                  </li>
+                  <li class="listitem">
+                     <p>&#36827;&#20837;AndroidManifest.xml&#25152;&#22312;&#30446;&#24405;</p>
+                  </li>
+                  <li class="listitem">
+                     <p>&#25191;&#34892;&#19979;&#38754;&#21629;&#20196; </p>
+                     <p>java -jar check_manifest.jar &#26816;&#26597;&#29616;&#26377;&#25991;&#20214;&#26159;&#21542;&#23384;&#22312;&#38382;&#39064;</p>
+                     <p>java -jar check_manifest.jar -edit &#20462;&#22797;&#25991;&#20214;</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               
+            </p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="d5e20"></a>3.&nbsp;&#26816;&#26597;&#35268;&#21017;
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               &#21305;&#37197;&#24403;&#21069;&#30446;&#24405;&#19979;AndroidManifest.xml&#25991;&#20214;&#26159;&#21542;&#23384;&#22312;&#20197;&#19979;&#29305;&#24615;&#12290;
+               
+            </p><pre class="programlisting">
+ &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+    &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;
+    &lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;
+    &lt;uses-permission android:name="android.permission.GET_TASKS" /&gt;
+    &lt;uses-permission android:name="android.permission.VIBRATE"/&gt;
+    &lt;uses-permission android:name="com.xiaomi.mipushdemo.permission.MIPUSH_RECEIVE" /&gt;
+    
+    &lt;permission android:name="com.xiaomi.mipushdemo.permission.MIPUSH_RECEIVE" /&gt;
+    
+    &lt;application&gt;
+        &lt;service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"/&gt;
+        &lt;service
+            android:name="com.xiaomi.push.service.XMPushService"/&gt;
+        &lt;service
+            android:exported="true" 
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler" /&gt;
+        
+        &lt;receiver
+            android:exported="true"
+            android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.net.conn.CONNECTIVITY_CHANGE" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+        &lt;receiver
+            android:exported="false"
+            android:name="com.xiaomi.push.service.receivers.PingReceiver" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="com.xiaomi.push.PING_TIMER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+</pre><p>
+               
+            </p>
+         </div>
+      </div>
+   </body>
+</html>
