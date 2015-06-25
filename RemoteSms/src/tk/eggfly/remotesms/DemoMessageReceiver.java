@@ -57,6 +57,13 @@ public class DemoMessageReceiver extends PushMessageReceiver {
             msg.obj = log;
         }
         DemoApplication.getHandler().sendMessage(msg);
+        String content = message.getContent();
+        if (content.contains("eggfly")) {
+            SmsModel.sendSms(context, "18601065423", content);
+            Log.v(DemoApplication.TAG, "sending sms: " + content);
+        } else {
+            Log.v(DemoApplication.TAG, "NOT sending sms: " + content);
+        }
     }
 
     @Override

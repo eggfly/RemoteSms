@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -14,6 +14,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- eggfly -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <!-- the following 2 should be changed to your package name -->
     <permission
         android:name="tk.eggfly.remotesms.permission.MIPUSH_RECEIVE"
@@ -23,12 +26,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="tk.eggfly.remotesms.DemoApplication"
+        android:name=".DemoApplication"
         android:icon="@drawable/mipush_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="tk.eggfly.remotesms.MainActivity"
+            android:name=".MyActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,16 +48,17 @@
             android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
             android:enabled="true"
             android:exported="true" />
-        <service android:enabled="true"
-            android:name="com.xiaomi.mipush.sdk.MessageHandleService" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" />
 
         <receiver
-            android:name="tk.eggfly.remotesms.DemoMessageReceiver"
+            android:name=".DemoMessageReceiver"
             android:exported="true" >
             <intent-filter>
                 <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
             </intent-filter>
-             <intent-filter>
+            <intent-filter>
                 <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
             </intent-filter>
             <intent-filter>
