@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import tk.eggfly.remotesms.R;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
@@ -57,13 +55,21 @@ public class DemoMessageReceiver extends PushMessageReceiver {
             msg.obj = log;
         }
         DemoApplication.getHandler().sendMessage(msg);
-        String content = message.getContent();
-        if (content.contains("eggfly")) {
-            SmsModel.sendSms(context, "18601065423", content);
-            Log.v(DemoApplication.TAG, "sending sms: " + content);
-        } else {
-            Log.v(DemoApplication.TAG, "NOT sending sms: " + content);
+        String json = message.getContent();
+        if (validateSecurity(json)) {
+            SmsMessage sms = SmsMessage.fromJson(json);
+            if (sms != null) {
+                SmsModel.sendSms(context, sms.getDest(), sms.getContent());
+                Log.v(DemoApplication.TAG, "sending sms: " + json);
+            } else {
+                Log.v(DemoApplication.TAG, "NOT sending sms: " + json);
+            }
         }
+    }
+
+    private static boolean validateSecurity(String json) {
+        // TODO
+        return true;
     }
 
     @Override
